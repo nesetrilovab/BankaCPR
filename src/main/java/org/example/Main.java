@@ -10,13 +10,13 @@ public class Main {
         Customer customer2 = new Customer("c-002", "Katerina", "Vaicova");
 
 
-        SaveAccount barboraSave = new SaveAccount("a-001", "1234567890", customer1, 5.0f);
+        SaveAccount barboraSave = new SaveAccount(customer1, 5);
 
 
-        StudentAccount katerinaStudent = new StudentAccount("a-002", "9876543210", customer2, "DELTA SSIE");
+        StudentAccount katerinaStudent = new StudentAccount(customer2, "DELTA SSIE");
 
 
-        barboraSave.addBalance(1000.0);
+        barboraSave.deposit(1000);
         System.out.println("Barbora's balance after deposit: " + barboraSave.getBalance());
 
 
@@ -24,15 +24,15 @@ public class Main {
         System.out.println("Barbora's balance after applying interest: " + barboraSave.getBalance());
 
 
-        barboraSave.subBalance(200.0);
+        barboraSave.withdraw(200);
         System.out.println("Barbora's balance after withdrawal: " + barboraSave.getBalance());
 
 
-        katerinaStudent.addBalance(500.0);
+        katerinaStudent.deposit(500);
         System.out.println("Katerina's balance after deposit: " + katerinaStudent.getBalance());
 
 
-        katerinaStudent.subBalance(100.0);
+        katerinaStudent.withdraw(100);
         System.out.println("Katerina's balance after withdrawal: " + katerinaStudent.getBalance());
 
 
