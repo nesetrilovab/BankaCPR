@@ -1,42 +1,57 @@
 package org.example;
 
-import org.example.accounts.*;
+import org.example.accounts.BaseBankAccount;
+import org.example.accounts.SaveAccount;
+import org.example.accounts.StudentAccount;
+import org.example.accounts.factories.BankAccountFactory;
+import org.example.accounts.services.BankAccountService;
 import org.example.people.customers.Customer;
 
 public class Main {
     public static void main(String[] args) {
 
+        // Create customers
         Customer customer1 = new Customer("c-001", "Barbora", "Nesetrilova");
         Customer customer2 = new Customer("c-002", "Katerina", "Vaicova");
 
+        // Create factory and service
+        BankAccountFactory accountFactory = new BankAccountFactory();
+        BankAccountService accountService = new BankAccountService();
 
-        SaveAccount barboraSave = new SaveAccount(customer1, 5);
+        // Create accounts via factory
+        SaveAccount barboraSave = accountFactory.createSaveAccount(customer1, 0, 5); // 5% interest
+        StudentAccount katerinaStudent = accountFactory.createStudentAccount(customer2, 0, "DELTA SSIE");
 
-
-        StudentAccount katerinaStudent = new StudentAccount(customer2, "DELTA SSIE");
-
-
-        barboraSave.deposit(1000);
+        // Deposit money using service
+        accountService.deposit(barboraSave, 1000);
         System.out.println("Barbora's balance after deposit: " + barboraSave.getBalance());
 
+        // Apply interest
+        accountService.applyInterest(barboraSave);
 
-        barboraSave.applyInterest();
         System.out.println("Barbora's balance after applying interest: " + barboraSave.getBalance());
 
-
-        barboraSave.withdraw(200);
+        // Withdraw money using service
+        accountService.withdraw(barboraSave, 200);
         System.out.println("Barbora's balance after withdrawal: " + barboraSave.getBalance());
 
-
-        katerinaStudent.deposit(500);
+        // Student account operations
+        accountService.deposit(katerinaStudent, 500);
         System.out.println("Katerina's balance after deposit: " + katerinaStudent.getBalance());
 
-
-        katerinaStudent.withdraw(100);
+        accountService.withdraw(katerinaStudent, 100);
         System.out.println("Katerina's balance after withdrawal: " + katerinaStudent.getBalance());
+
+        try {
+            accountService.deposit(barboraSave, 15000);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Large deposit blocked: " + e.getMessage());
+        }
+
 
 
         System.out.println("Katerina's school: " + katerinaStudent.getSchool());
         System.out.println("Barbora's interest rate: " + barboraSave.getInterestRate() + "%");
+        System.out.println("Barbora's final balance: " + barboraSave.getBalance());
     }
 }

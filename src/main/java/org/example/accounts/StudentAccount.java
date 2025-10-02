@@ -1,19 +1,20 @@
 package org.example.accounts;
 
+import org.example.accounts.generators.BankAccountNumberGenerator;
 import org.example.people.customers.Customer;
 
 public class StudentAccount extends BaseBankAccount {
     private String school;
 
 
-    public StudentAccount(Customer customer, String school) {
-        super(customer); // balance na 0
+    public StudentAccount(Customer customer, String school, String bankAccountNumber) {
+        super(customer, bankAccountNumber); // balance na 0
         this.school = school;
     }
 
 
-    public StudentAccount(Customer customer) {
-        super(customer);
+    public StudentAccount(Customer customer, String bankAccountNumber) {
+        super(customer, bankAccountNumber);
     }
 
     // Getter a Setter
