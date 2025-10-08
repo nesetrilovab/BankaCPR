@@ -1,7 +1,13 @@
 package org.example.people.customers;
+
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
 public class Customer {
+    @JacksonXmlProperty(localName = "uuid")
     private String uuid;
+    @JacksonXmlProperty(localName = "firstName")
     private String firstName;
+    @JacksonXmlProperty(localName = "lastName")
     private String lastName;
 
     public Customer(String uuid, String firstName, String lastName) {

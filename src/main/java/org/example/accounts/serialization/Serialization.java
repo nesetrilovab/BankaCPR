@@ -1,8 +1,8 @@
 package org.example.accounts.serialization;
 
-import org.example.people.customers.Customer;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 public interface Serialization {
-    public String serialization(Object customer);
-    public Object deserialization(Object serializedObject);
+    public String serialize(Object customer) throws JsonProcessingException;
+    public Object deserialize(String serializedObject) throws JsonProcessingException;
 }
