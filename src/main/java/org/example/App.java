@@ -5,7 +5,7 @@ import com.google.inject.Inject;
 import org.example.accounts.SaveAccount;
 import org.example.accounts.StudentAccount;
 import org.example.accounts.factories.BankAccountFactory;
-import org.example.accounts.serialization.CustomerSerialization;
+import org.example.accounts.serialization.CustomerGsonSerialization;
 import org.example.accounts.serialization.CustomerSerializationFactory;
 import org.example.accounts.services.BankAccountService;
 import org.example.people.customers.Customer;
@@ -53,7 +53,7 @@ public class App {
             System.out.println("Large deposit blocked: " + e.getMessage());
         }
 
-        CustomerSerialization customerSerialization = this.customerSerializationFactory.create();
+        CustomerGsonSerialization customerSerialization = this.customerSerializationFactory.create();
         String serializedString = customerSerialization.serialize(customer1);
 
         System.out.println("Customer serialized: " + serializedString);

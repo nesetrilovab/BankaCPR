@@ -5,27 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48a107b6-07b2-4d50-8d4d-3d663ac671bd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/serialization/CustomerSerialization.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/serialization/CustomerSerializationFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/serialization/GsonFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/serialization/JsonMapperFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/serialization/MapperFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/serialization/XmlMapperFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accounts/serialization/BankAccountCustomerSerialization.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accounts/serialization/BankAccountCustomerSerializationFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accounts/serialization/Serialization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/serialization/Serialization.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/people/customers/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/people/customers/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,6 +167,8 @@
       <workItem from="1759753017957" duration="650000" />
       <workItem from="1759753682536" duration="1941000" />
       <workItem from="1759755654565" duration="2177000" />
+      <workItem from="1759948705652" duration="362000" />
+      <workItem from="1759989903457" duration="323000" />
     </task>
     <servers />
   </component>
