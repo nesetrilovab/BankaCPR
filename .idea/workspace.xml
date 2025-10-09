@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="48a107b6-07b2-4d50-8d4d-3d663ac671bd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accounts/serialization/CustomerGsonSerialization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/serialization/CustomerGsonSerialization.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +169,7 @@
       <workItem from="1759753682536" duration="1941000" />
       <workItem from="1759755654565" duration="2177000" />
       <workItem from="1759948705652" duration="362000" />
-      <workItem from="1759989903457" duration="323000" />
+      <workItem from="1759989903457" duration="1121000" />
     </task>
     <servers />
   </component>
