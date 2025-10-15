@@ -5,8 +5,9 @@ import com.google.inject.Inject;
 import org.example.accounts.SaveAccount;
 import org.example.accounts.StudentAccount;
 import org.example.accounts.factories.BankAccountFactory;
-import org.example.accounts.serialization.CustomerGsonSerialization;
-import org.example.accounts.serialization.CustomerSerializationFactory;
+import org.example.people.customers.factories.CustomerFactory;
+import org.example.people.customers.factories.CustomerSerializationFactory;
+import org.example.people.customers.serialization.CustomerXmlSerialization;
 import org.example.accounts.services.BankAccountService;
 import org.example.people.customers.Customer;
 
@@ -16,7 +17,7 @@ public class App {
 
     public void run() throws JsonProcessingException {
         // Create customers
-        Customer customer1 = new Customer("c-001", "Barbora", "Nesetrilova");
+        Customer customer1 = CustomerFactory.createCustomer("55d5d5d", "Barces", "Nesetrilova");
         Customer customer2 = new Customer("c-002", "Katerina", "Vaicova");
 
         // Create factory and service
@@ -53,7 +54,7 @@ public class App {
             System.out.println("Large deposit blocked: " + e.getMessage());
         }
 
-        CustomerGsonSerialization customerSerialization = this.customerSerializationFactory.create();
+        CustomerXmlSerialization customerSerialization = this.customerSerializationFactory.create();
         String serializedString = customerSerialization.serialize(customer1);
 
         System.out.println("Customer serialized: " + serializedString);

@@ -7,22 +7,37 @@ import org.example.accounts.StudentAccount;
 import org.example.accounts.generators.BankAccountNumberGenerator;
 import org.example.people.customers.Customer;
 
+import java.util.UUID;
+
 public class BankAccountFactory {
+
     private final BankAccountNumberGenerator generator = new BankAccountNumberGenerator();
 
-    public BaseBankAccount createBaseAccount(Customer customer, double balance) {
-        return new BaseBankAccount(customer, balance, generator.generate());
+    // Base account
+    public BaseBankAccount createBaseAccount(Customer customer) {
+        String uuid = UUID.randomUUID().toString();
+        String accountNumber = generator.generate();
+        return new BaseBankAccount(uuid, accountNumber, customer);
     }
 
-    public BankAccount createBankAccount(Customer customer, double balance) {
-        return new BankAccount(customer, balance, generator.generate());
+
+    // Regular bank account
+    public BankAccount createBankAccount(Customer customer) {
+        String accountNumber = generator.generate();
+        return new BankAccount(accountNumber, customer); // balance defaults to 0.0
     }
+
+    // Savings account
     public SaveAccount createSaveAccount(Customer customer, double balance, double interestRate) {
-        return new SaveAccount(customer, balance, interestRate, generator.generate());
+        String uuid = UUID.randomUUID().toString();
+        String accountNumber = generator.generate();
+        return new SaveAccount(uuid, accountNumber, customer, balance, interestRate); // balance defaults to 0.0
     }
 
-    public StudentAccount createStudentAccount(Customer customer, double balance, String schoolName) {
-        return new StudentAccount(customer, schoolName, generator.generate());
+    // Student account
+    public StudentAccount createStudentAccount(Customer customer, double balance,String school) {
+        String uuid = UUID.randomUUID().toString();
+        String accountNumber = generator.generate();
+        return new StudentAccount(uuid, accountNumber, customer, balance, school); // balance defaults to 0.0
     }
-
 }

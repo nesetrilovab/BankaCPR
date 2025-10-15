@@ -1,8 +1,9 @@
-package org.example.accounts.serialization;
+package org.example.people.customers.serialization;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
+import org.example.accounts.factories.GsonFactory;
+import org.example.accounts.serialization.Serialization;
 import org.example.people.customers.Customer;
 
 public class CustomerGsonSerialization implements Serialization {

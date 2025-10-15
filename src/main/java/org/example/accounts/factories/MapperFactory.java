@@ -1,4 +1,4 @@
-package org.example.accounts.serialization;
+package org.example.accounts.factories;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 

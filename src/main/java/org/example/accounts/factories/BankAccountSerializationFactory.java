@@ -1,6 +1,7 @@
-package org.example.accounts.serialization;
+package org.example.accounts.factories;
 
 import org.example.accounts.BaseBankAccount;
+import org.example.accounts.serialization.BankAccountSerialization;
 
 public class BankAccountSerializationFactory {
     public static BankAccountSerialization createBankAccount(BaseBankAccount account) {
