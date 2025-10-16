@@ -2,9 +2,13 @@ package org.example;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.google.inject.Inject;
+import org.example.accounts.BankAccount;
 import org.example.accounts.SaveAccount;
 import org.example.accounts.StudentAccount;
 import org.example.accounts.factories.BankAccountFactory;
+import org.example.cards.Card;
+import org.example.cards.CardFactory;
+import org.example.cards.LinkToBankAccountService;
 import org.example.people.customers.factories.CustomerFactory;
 import org.example.people.customers.factories.CustomerSerializationFactory;
 import org.example.people.customers.serialization.CustomerXmlSerialization;
@@ -16,54 +20,60 @@ public class App {
     private CustomerSerializationFactory customerSerializationFactory;
 
     public void run() throws JsonProcessingException {
-        // Create customers
-        Customer customer1 = CustomerFactory.createCustomer("55d5d5d", "Barces", "Nesetrilova");
-        Customer customer2 = new Customer("c-002", "Katerina", "Vaicova");
 
-        // Create factory and service
-        BankAccountFactory accountFactory = new BankAccountFactory();
+        Customer alice = CustomerFactory.createCustomer("Alice", "Johnson");
+        Customer bob = CustomerFactory.createCustomer("Bob", "Smith");
+        Customer charlie = CustomerFactory.createCustomer("Charlie", "Brown");
+
+
         BankAccountService accountService = new BankAccountService();
 
-        // Create accounts via factory
-        SaveAccount barboraSave = accountFactory.createSaveAccount(customer1, 0, 5); // 5% interest
-        StudentAccount katerinaStudent = accountFactory.createStudentAccount(customer2, 0, "DELTA SSIE");
 
-        // Deposit money using service
-        accountService.deposit(barboraSave, 1000);
-        System.out.println("Barbora's balance after deposit: " + barboraSave.getBalance());
 
-        // Apply interest
-        accountService.applyInterest(barboraSave);
 
-        System.out.println("Barbora's balance after applying interest: " + barboraSave.getBalance());
 
-        // Withdraw money using service
-        accountService.withdraw(barboraSave, 200);
-        System.out.println("Barbora's balance after withdrawal: " + barboraSave.getBalance());
 
-        // Student account operations
-        accountService.deposit(katerinaStudent, 500);
-        System.out.println("Katerina's balance after deposit: " + katerinaStudent.getBalance());
+        BankAccountFactory accountFactory = new BankAccountFactory();
+        BankAccount aliceAccount = accountFactory.createBankAccount(alice);
+        SaveAccount bobSavings = accountFactory.createSaveAccount(bob, 2.5);
+        StudentAccount charlieStudentAcc = accountFactory.createStudentAccount(charlie, "Oxford University");
 
-        accountService.withdraw(katerinaStudent, 100);
-        System.out.println("Katerina's balance after withdrawal: " + katerinaStudent.getBalance());
 
-        try {
-            accountService.deposit(barboraSave, 15000);
-        } catch (IllegalArgumentException e) {
-            System.out.println("Large deposit blocked: " + e.getMessage());
-        }
+        System.out.println("Alice -> " + aliceAccount.getBankAccountNumber());
+        System.out.println("Bob -> " + bobSavings.getBankAccountNumber());
+        System.out.println("Charlie -> " + charlieStudentAcc.getBankAccountNumber());
+        System.out.println();
+        CardFactory cardFactory = new CardFactory();
 
+        Card aliceCard1 = cardFactory.createCard("12", "2028", "123", "Alice Johnson");
+        Card aliceCard2 = cardFactory.createCard("06", "2029", "456", "Alice Johnson");
+        Card charlieCard = cardFactory.createCard("09", "2027", "789", "Charlie Brown");
+
+        LinkToBankAccountService linker = new LinkToBankAccountService();
+
+        linker.linkCardToAccount(aliceAccount, aliceCard1);
+        linker.linkCardToAccount(aliceAccount, aliceCard2);
+        linker.linkCardToAccount(charlieStudentAcc, charlieCard);
+        System.out.println("\n Cards linked to Alice's account:");
+        aliceAccount.getCards().forEach(c -> System.out.println(" - " + c.getCardNumber()));
+
+        System.out.println("\n Cards linked to Charlie's student account:");
+        charlieStudentAcc.getCards().forEach(c -> System.out.println(" - " + c.getCardNumber()));
         CustomerXmlSerialization customerSerialization = this.customerSerializationFactory.create();
-        String serializedString = customerSerialization.serialize(customer1);
+
+        System.out.println("\n Verification:");
+        System.out.println("Alice UUID: " + alice.getUuid());
+        System.out.println("Bob UUID: " + bob.getUuid());
+        System.out.println("Charlie UUID: " + charlie.getUuid());
+        System.out.println("Alice Balance: " + aliceAccount.getBalance());
+
+        String serializedString = customerSerialization.serialize(alice);
 
         System.out.println("Customer serialized: " + serializedString);
 
         Customer reserializedCustomer = customerSerialization.deserialize(serializedString);
         System.out.println("Customer deserialized: " + reserializedCustomer.getUuid());
 
-        System.out.println("Katerina's school: " + katerinaStudent.getSchool());
-        System.out.println("Barbora's interest rate: " + barboraSave.getInterestRate() + "%");
-        System.out.println("Barbora's final balance: " + barboraSave.getBalance());
+
     }
 }
