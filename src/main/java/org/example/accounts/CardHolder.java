@@ -5,17 +5,13 @@ import org.example.people.customers.Customer;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
-/**
- *
- */
 public abstract class CardHolder extends BaseBankAccount {
 
     public List<Card> cards = new ArrayList<>();
 
-    public CardHolder(String uuid, String bankAccountNumber, Customer customer) {
-        super(uuid, bankAccountNumber, customer, 0.0);
+    public CardHolder(String uuid, String bankAccountNumber, Customer customer, double balance) {
+        super(uuid, bankAccountNumber, customer, balance);
     }
 
 
@@ -30,6 +26,6 @@ public abstract class CardHolder extends BaseBankAccount {
 
 
     public List<Card> getCards() {
-        return new ArrayList<>(cards); // simpler than unmodifiableList
+        return new ArrayList<>(cards);
     }
 }

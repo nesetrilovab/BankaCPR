@@ -9,8 +9,8 @@ import java.util.List;
 public class BankAccount extends CardHolder{
     private List<Card> cards = new ArrayList<>();
 
-    public BankAccount(String bankAccountNumber, Customer customer) {
-        super(bankAccountNumber, customer);
+    public BankAccount(String uuid, String bankAccountNumber, Customer customer, double balance) {
+        super(uuid, bankAccountNumber, customer, balance);
     }
 
 

@@ -9,9 +9,9 @@ import java.util.List;
 public class StudentAccount extends CardHolder{
     private String school;
 
-    public StudentAccount(String uuid, String bankAccountNumber, Customer customer, double balance, String schoolName) {
-        super(bankAccountNumber, customer);
-        this.school = schoolName;
+    public StudentAccount(String uuid, String bankAccountNumber, Customer customer, double balance, String school) {
+        super(uuid, bankAccountNumber, customer, balance);
+        this.school = school;
     }
 
 

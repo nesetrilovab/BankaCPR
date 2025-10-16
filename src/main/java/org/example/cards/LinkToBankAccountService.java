@@ -11,14 +11,14 @@ public class LinkToBankAccountService {
         }
 
         if (card == null) {
-            throw new IllegalArgumentException("Card cannot be null.");
+            throw new IllegalArgumentException("Card can't be null.");
         }
 
         if (!(account instanceof CardHolder)) {
-            throw new IllegalArgumentException("This account type cannot have cards.");
+            throw new IllegalArgumentException("This account type can't have cards.");
         }
 
-        // If the card already belongs to another account
+
         if (card.getLinkedAccount() != null) {
             throw new IllegalArgumentException("This card is already linked to another account.");
         }

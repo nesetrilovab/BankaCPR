@@ -2,7 +2,7 @@ package org.example.cards;
 
 import org.example.accounts.BaseBankAccount;
 
-public class Card {//udělat seznam karet, přidat prop account
+public class Card {
     public String cardNumber;
     public String expirationMonth;
     public String expirationYear;

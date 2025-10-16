@@ -1,5 +1,7 @@
 package org.example.accounts.factories;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import org.example.accounts.BankAccount;
 import org.example.accounts.BaseBankAccount;
 import org.example.accounts.SaveAccount;
@@ -22,22 +24,23 @@ public class BankAccountFactory {
 
 
     // Regular bank account
-    public BankAccount createBankAccount(Customer customer) {
+    public BankAccount createBankAccount(Customer customer, double balance) {
+        String uuid = UUID.randomUUID().toString();
         String accountNumber = generator.generate();
-        return new BankAccount(accountNumber, customer); // balance defaults to 0.0
+        return new BankAccount(uuid, accountNumber, customer, balance);
     }
 
     // Savings account
     public SaveAccount createSaveAccount(Customer customer, double balance, double interestRate) {
         String uuid = UUID.randomUUID().toString();
         String accountNumber = generator.generate();
-        return new SaveAccount(uuid, accountNumber, customer, balance, interestRate); // balance defaults to 0.0
+        return new SaveAccount(uuid, accountNumber, customer, balance, interestRate);
     }
 
     // Student account
     public StudentAccount createStudentAccount(Customer customer, double balance,String school) {
         String uuid = UUID.randomUUID().toString();
         String accountNumber = generator.generate();
-        return new StudentAccount(uuid, accountNumber, customer, balance, school); // balance defaults to 0.0
+        return new StudentAccount(uuid, accountNumber, customer, balance, school);
     }
 }

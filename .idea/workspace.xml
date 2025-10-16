@@ -5,28 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48a107b6-07b2-4d50-8d4d-3d663ac671bd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/CardHolder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/cards/Card.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/cards/CardFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/cards/CardNumberGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/cards/LinkToBankAccountService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/factories/JsonMapperFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accounts/BankAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/BankAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accounts/BaseBankAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/BaseBankAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accounts/SaveAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/SaveAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accounts/CardHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/CardHolder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accounts/StudentAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/StudentAccount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accounts/factories/BankAccountFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/factories/BankAccountFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accounts/factories/CustomerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/people/customers/factories/CustomerFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accounts/serialization/BankAccountSerializationFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/factories/BankAccountSerializationFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accounts/serialization/CustomerGsonSerialization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/people/customers/serialization/CustomerGsonSerialization.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accounts/serialization/CustomerSerializationFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/people/customers/factories/CustomerSerializationFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accounts/serialization/CustomerXmlSerialization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/people/customers/serialization/CustomerXmlSerialization.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accounts/serialization/GsonFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/factories/GsonFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accounts/serialization/JsonMapperFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accounts/serialization/MapperFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/factories/MapperFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accounts/serialization/XmlMapperFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/factories/XmlMapperFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/cards/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/cards/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/cards/LinkToBankAccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/cards/LinkToBankAccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/people/customers/serialization/CustomerXmlSerialization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/people/customers/serialization/CustomerXmlSerialization.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,8 +63,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -190,7 +177,8 @@
       <workItem from="1759755654565" duration="2177000" />
       <workItem from="1759948705652" duration="362000" />
       <workItem from="1759989903457" duration="8710000" />
-      <workItem from="1760554891460" duration="3651000" />
+      <workItem from="1760554891460" duration="4047000" />
+      <workItem from="1760594067618" duration="1090000" />
     </task>
     <servers />
   </component>
