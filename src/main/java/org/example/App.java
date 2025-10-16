@@ -6,6 +6,7 @@ import org.example.accounts.BankAccount;
 import org.example.accounts.SaveAccount;
 import org.example.accounts.StudentAccount;
 import org.example.accounts.factories.BankAccountFactory;
+import org.example.accounts.transactions.TransactionLogger;
 import org.example.cards.Card;
 import org.example.cards.CardFactory;
 import org.example.cards.LinkToBankAccountService;
@@ -24,12 +25,9 @@ public class App {
         Customer alice = CustomerFactory.createCustomer("Alice", "Johnson");
         Customer bob = CustomerFactory.createCustomer("Bob", "Smith");
         Customer charlie = CustomerFactory.createCustomer("Charlie", "Brown");
+        TransactionLogger logger = new TransactionLogger();
 
-
-        BankAccountService accountService = new BankAccountService();
-
-
-
+        BankAccountService accountService = new BankAccountService(logger);
 
 
 
