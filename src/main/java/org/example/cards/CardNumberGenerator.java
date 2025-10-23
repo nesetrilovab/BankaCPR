@@ -1,8 +1,12 @@
 package org.example.cards;
 
-import java.util.Random;
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 
+import java.util.Random;
+@Singleton
 public class CardNumberGenerator {
+    @Inject
     private final int cardNumberLength = 16;
 
     public final Random random;

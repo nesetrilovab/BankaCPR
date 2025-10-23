@@ -1,11 +1,13 @@
 package org.example.accounts.services;
 
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import org.example.accounts.BaseBankAccount;
 import org.example.accounts.transactions.TransactionFactory;
 import org.example.accounts.transactions.TransactionLogger;
-
+@Singleton
 public class DepositService {
-
+    @Inject
     private final TransactionLogger logger;
 
     public DepositService(TransactionLogger logger) {

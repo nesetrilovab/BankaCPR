@@ -1,10 +1,12 @@
 package org.example.cards;
 
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import org.example.accounts.BaseBankAccount;
 import org.example.accounts.CardHolder;
-
+@Singleton
 public class LinkToBankAccountService {
-
+    @Inject
     public void linkCardToAccount(BaseBankAccount account, Card card) {
         if (account == null) {
             throw new IllegalArgumentException("Account cannot be null.");

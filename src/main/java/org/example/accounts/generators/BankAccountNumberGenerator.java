@@ -1,8 +1,12 @@
 package org.example.accounts.generators;
 
-import java.util.Random;
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 
+import java.util.Random;
+@Singleton
 public class BankAccountNumberGenerator {
+    @Inject
     private final int accountNumberLength = 10;
     private final int bankNumberLength = 4;
     public final Random random;

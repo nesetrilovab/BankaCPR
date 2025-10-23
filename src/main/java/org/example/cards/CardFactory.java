@@ -1,12 +1,25 @@
 package org.example.cards;
 
+
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
+
+@Singleton
 public class CardFactory {
-
-        public Card createCard(String expirationMonth, String expirationYear, String cvc, String owner) {
-            CardNumberGenerator generator = new CardNumberGenerator();
-            String cardNumber = generator.generate();
+    @Inject
+    private final CardNumberGenerator cardNumberGenerator;
 
 
-            return new Card(cardNumber, expirationMonth, expirationYear, cvc, owner);
-        }
+    public CardFactory(CardNumberGenerator cardNumberGenerator) {
+        this.cardNumberGenerator = cardNumberGenerator;
+    }
+
+
+    public Card createCard(String expirationMonth, String expirationYear, String cvc, String owner) {
+
+        String cardNumber = cardNumberGenerator.generate();
+
+        return new Card(cardNumber, expirationMonth, expirationYear, cvc, owner);
+    }
 }
+

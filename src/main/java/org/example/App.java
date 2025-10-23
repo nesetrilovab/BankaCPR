@@ -10,68 +10,88 @@ import org.example.accounts.transactions.TransactionLogger;
 import org.example.cards.Card;
 import org.example.cards.CardFactory;
 import org.example.cards.LinkToBankAccountService;
-import org.example.people.customers.factories.CustomerFactory;
-import org.example.people.customers.factories.CustomerSerializationFactory;
-import org.example.people.customers.serialization.CustomerXmlSerialization;
 import org.example.accounts.services.BankAccountService;
 import org.example.people.customers.Customer;
+import org.example.people.customers.factories.CustomerFactory;
+import org.example.people.customers.serialization.CustomerXmlSerialization;
+import org.example.people.customers.factories.CustomerSerializationFactory;
+
+import java.awt.*;
 
 public class App {
+    @Inject @Deprecated
+    Container container;
+    @Inject
+    private CustomerFactory customerFactory;
+    @Inject
+    private BankAccountFactory bankAccountFactory;
+    @Inject
+    private CardFactory cardFactory;
+    @Inject
+    private BankAccountService bankAccountService;
     @Inject
     private CustomerSerializationFactory customerSerializationFactory;
+    @Inject
+    private TransactionLogger transactionLogger;
 
     public void run() throws JsonProcessingException {
 
-        Customer alice = CustomerFactory.createCustomer("Alice", "Johnson");
-        Customer bob = CustomerFactory.createCustomer("Bob", "Smith");
-        Customer charlie = CustomerFactory.createCustomer("Charlie", "Brown");
-        TransactionLogger logger = new TransactionLogger();
 
-        BankAccountService accountService = new BankAccountService(logger);
+        Container container = new Container();
 
 
+        CustomerFactory customerFactory = this.customerFactory;
+        BankAccountFactory accountFactory = this.bankAccountFactory;
+        CardFactory cardFactory = this.cardFactory;
+        BankAccountService accountService = this.bankAccountService;
+        CustomerSerializationFactory customerSerializationFactory = this.customerSerializationFactory;
 
-        BankAccountFactory accountFactory = new BankAccountFactory();
+
+        // --- Create customers ---
+        Customer alice = customerFactory.createCustomer("Alice", "Johnson");
+        Customer bob = customerFactory.createCustomer("Bob", "Smith");
+        Customer charlie = customerFactory.createCustomer("Charlie", "Brown");
+
+        // --- Create accounts ---
         BankAccount aliceAccount = accountFactory.createBankAccount(alice);
         SaveAccount bobSavings = accountFactory.createSaveAccount(bob, 2.5);
         StudentAccount charlieStudentAcc = accountFactory.createStudentAccount(charlie, "Oxford University");
-
 
         System.out.println("Alice -> " + aliceAccount.getBankAccountNumber());
         System.out.println("Bob -> " + bobSavings.getBankAccountNumber());
         System.out.println("Charlie -> " + charlieStudentAcc.getBankAccountNumber());
         System.out.println();
-        CardFactory cardFactory = new CardFactory();
 
+        // --- Create cards ---
         Card aliceCard1 = cardFactory.createCard("12", "2028", "123", "Alice Johnson");
         Card aliceCard2 = cardFactory.createCard("06", "2029", "456", "Alice Johnson");
         Card charlieCard = cardFactory.createCard("09", "2027", "789", "Charlie Brown");
 
+        // --- Link cards to accounts ---
         LinkToBankAccountService linker = new LinkToBankAccountService();
-
         linker.linkCardToAccount(aliceAccount, aliceCard1);
         linker.linkCardToAccount(aliceAccount, aliceCard2);
         linker.linkCardToAccount(charlieStudentAcc, charlieCard);
-        System.out.println("\n Cards linked to Alice's account:");
+
+        System.out.println("\nCards linked to Alice's account:");
         aliceAccount.getCards().forEach(c -> System.out.println(" - " + c.getCardNumber()));
 
-        System.out.println("\n Cards linked to Charlie's student account:");
+        System.out.println("\nCards linked to Charlie's student account:");
         charlieStudentAcc.getCards().forEach(c -> System.out.println(" - " + c.getCardNumber()));
-        CustomerXmlSerialization customerSerialization = this.customerSerializationFactory.create();
 
-        System.out.println("\n Verification:");
-        System.out.println("Alice UUID: " + alice.getUuid());
-        System.out.println("Bob UUID: " + bob.getUuid());
-        System.out.println("Charlie UUID: " + charlie.getUuid());
-        System.out.println("Alice Balance: " + aliceAccount.getBalance());
-
+        // --- Serialize customer ---
+        CustomerXmlSerialization customerSerialization = customerSerializationFactory.create();
         String serializedString = customerSerialization.serialize(alice);
-
-        System.out.println("Customer serialized: " + serializedString);
+        System.out.println("\nCustomer serialized: " + serializedString);
 
         Customer reserializedCustomer = customerSerialization.deserialize(serializedString);
         System.out.println("Customer deserialized: " + reserializedCustomer.getUuid());
 
-
+        // --- Verification ---
+        System.out.println("\nVerification:");
+        System.out.println("Alice UUID: " + alice.getUuid());
+        System.out.println("Bob UUID: " + bob.getUuid());
+        System.out.println("Charlie UUID: " + charlie.getUuid());
+        System.out.println("Alice Balance: " + aliceAccount.getBalance());
     }
 }

@@ -5,15 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48a107b6-07b2-4d50-8d4d-3d663ac671bd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/services/ApplyInterestService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/services/WithdrawService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/transactions/Transaction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/transactions/TransactionFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/transactions/TransactionLogger.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/BankInjector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accounts/factories/BankAccountFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/factories/BankAccountFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accounts/factories/BankAccountSerializationFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/factories/BankAccountSerializationFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accounts/generators/BankAccountNumberGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/generators/BankAccountNumberGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accounts/services/ApplyInterestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/services/ApplyInterestService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accounts/services/BankAccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/services/BankAccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accounts/services/CheckDepositLimitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/services/CheckDepositLimitService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accounts/services/DepositService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/services/DepositService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/cards/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/cards/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accounts/services/WithdrawService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/services/WithdrawService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accounts/transactions/TransactionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/transactions/TransactionFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accounts/transactions/TransactionLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/transactions/TransactionLogger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/cards/CardFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/cards/CardFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/cards/CardNumberGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/cards/CardNumberGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/cards/LinkToBankAccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/cards/LinkToBankAccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/people/customers/factories/CustomerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/people/customers/factories/CustomerFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/people/customers/factories/CustomerSerializationFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/people/customers/factories/CustomerSerializationFactory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,7 +188,9 @@
       <workItem from="1759948705652" duration="362000" />
       <workItem from="1759989903457" duration="8710000" />
       <workItem from="1760554891460" duration="4047000" />
-      <workItem from="1760594067618" duration="7524000" />
+      <workItem from="1760594067618" duration="8440000" />
+      <workItem from="1760895313054" duration="280000" />
+      <workItem from="1761199312742" duration="8345000" />
     </task>
     <servers />
   </component>

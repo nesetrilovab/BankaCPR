@@ -1,14 +1,16 @@
 package org.example.accounts.services;
 
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import org.example.accounts.BaseBankAccount;
 import org.example.cards.Card;
 import org.example.accounts.transactions.TransactionFactory;
 import org.example.accounts.transactions.TransactionLogger;
 
 import java.time.YearMonth;
-
+@Singleton
 public class WithdrawService {
-
+    @Inject
     private final TransactionLogger logger;
 
     public WithdrawService(TransactionLogger logger) {
