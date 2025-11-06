@@ -1,7 +1,9 @@
 package org.example.accounts.facades;
 
 import org.example.accounts.BaseBankAccount;
+import org.example.accounts.MoneyTransfer;
 import org.example.accounts.SaveAccount;
+import org.example.accounts.factories.MoneyTransferFactory;
 import org.example.accounts.services.InterestCalculatorService;
 
 import java.time.LocalDate;
@@ -10,7 +12,7 @@ import java.util.List;
 public class InterestRunnerFacade {
 
     private final InterestCalculatorService interestCalculator;
-
+private final MoneyTransferFactory moneyTransferFactory = new MoneyTransferFactory();
     public InterestRunnerFacade(InterestCalculatorService interestCalculator) {
         this.interestCalculator = interestCalculator;
     }
@@ -22,7 +24,8 @@ public class InterestRunnerFacade {
                 saveAccount.setBalance(saveAccount.getBalance() + interest);
                 saveAccount.setLastInterestDate(LocalDate.now());
                 saveAccount.setNextInterestDate(LocalDate.now().plusMonths(1)); // pokud je interest calculating kazdej mesic
-
+                MoneyTransfer transfer = moneyTransferFactory.createCardWithdrawal(interest);
+                account.addTransfer(transfer);
                 System.out.println("Applied interest " + interest + " to " + saveAccount.getBankAccountNumber());
             }
         }

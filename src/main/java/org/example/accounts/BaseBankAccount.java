@@ -13,7 +13,11 @@ public class BaseBankAccount {
     private final String bankAccountNumber;
     private Customer customer;
     private double balance;
+    private List<MoneyTransfer> transfers = new ArrayList<>();
 
+    public void addTransfer(MoneyTransfer transfer) {
+        this.transfers.add(transfer);
+    }
 
     public BaseBankAccount(String uuid, String bankAccountNumber, Customer customer, double balance) {
         this.uuid = uuid;
@@ -34,6 +38,9 @@ public class BaseBankAccount {
     public String getBankAccountNumber() { return bankAccountNumber; }
     public Customer getCustomer() { return customer; }
     public double getBalance() { return balance; }
+    public List<MoneyTransfer> getTransfers() {
+        return transfers;
+    }
 
 
     public void setBalance(double balance) { this.balance = balance; }

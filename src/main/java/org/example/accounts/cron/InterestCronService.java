@@ -24,6 +24,6 @@ public class InterestCronService {
             public void run() {
                 interestRunnerFacade.processAllInterest(accounts);
             }
-        }, 0, 60 * 1000); // every 1 minute
+        }, 0, 60 * 1000); //kazdou minutu
     }
 }
