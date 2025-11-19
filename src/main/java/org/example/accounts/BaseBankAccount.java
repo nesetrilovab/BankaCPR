@@ -41,6 +41,9 @@ public class BaseBankAccount {
     public List<MoneyTransfer> getTransfers() {
         return transfers;
     }
+    public void clearExportedTransfers() {
+        transfers.removeIf(MoneyTransfer::hasBeenTransferred);
+    }
 
 
     public void setBalance(double balance) { this.balance = balance; }
