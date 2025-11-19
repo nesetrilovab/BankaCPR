@@ -2,17 +2,15 @@ package org.example;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.google.inject.Inject;
-import org.example.accounts.BankAccount;
-import org.example.accounts.SaveAccount;
-import org.example.accounts.StudentAccount;
+import org.example.accounts.*;
+import org.example.accounts.facades.InterestRunnerFacade;
 import org.example.accounts.factories.BankAccountFactory;
 import org.example.accounts.services.BankAccountService;
+import org.example.accounts.services.DepositService;
+import org.example.accounts.services.WithdrawService;
 import org.example.accounts.cron.InterestCronService;
-import org.example.accounts.facades.InterestRunnerFacade;
 import org.example.accounts.transactions.TransactionLogger;
-import org.example.cards.Card;
-import org.example.cards.CardFactory;
-import org.example.cards.LinkToBankAccountService;
+import org.example.cards.*;
 import org.example.people.customers.Customer;
 import org.example.people.customers.factories.CustomerFactory;
 import org.example.people.customers.factories.CustomerSerializationFactory;
@@ -22,7 +20,6 @@ import java.util.List;
 
 public class App {
 
-    // Dependency injection
     @Inject private CustomerFactory customerFactory;
     @Inject private BankAccountFactory bankAccountFactory;
     @Inject private CardFactory cardFactory;
@@ -31,6 +28,8 @@ public class App {
     @Inject private TransactionLogger transactionLogger;
     @Inject private InterestRunnerFacade interestRunnerFacade;
     @Inject private InterestCronService interestCronService;
+    @Inject private DepositService depositService;
+    @Inject private WithdrawService withdrawService;
 
     public void run() throws JsonProcessingException {
 
@@ -44,49 +43,44 @@ public class App {
         SaveAccount bobSavings = bankAccountFactory.createSaveAccount(bob, 2.5);
         StudentAccount charlieStudentAcc = bankAccountFactory.createStudentAccount(charlie, "Oxford University");
 
-        System.out.println("Alice -> " + aliceAccount.getBankAccountNumber());
-        System.out.println("Bob -> " + bobSavings.getBankAccountNumber());
-        System.out.println("Charlie -> " + charlieStudentAcc.getBankAccountNumber());
-        System.out.println();
+        // --- Deposits (add MoneyTransfer automatically) ---
+        depositService.depositCash(aliceAccount, 1000.0);
+        depositService.depositCash(bobSavings, 5000.0);
+        depositService.depositCash(charlieStudentAcc, 300.0);
 
-        // --- Create cards ---
+        // --- Withdrawals (add MoneyTransfer automatically) ---
+        withdrawService.withdrawCash(aliceAccount, 200.0);
+        withdrawService.withdrawCash(bobSavings, 1000.0);
+
+        // --- Print balances and transfers ---
+        System.out.println("=== Account balances and transfers ===");
+        System.out.println(alice.getUuid() + " balance: " + aliceAccount.getBalance() + ", transfers: " + aliceAccount.getTransfers());
+        System.out.println(bob.getUuid() + " balance: " + bobSavings.getBalance() + ", transfers: " + bobSavings.getTransfers());
+        System.out.println(charlie.getUuid() + " balance: " + charlieStudentAcc.getBalance() + ", transfers: " + charlieStudentAcc.getTransfers());
+
+        // --- Cards ---
         Card aliceCard1 = cardFactory.createCard("12", "2028", "123", "Alice Johnson");
         Card aliceCard2 = cardFactory.createCard("06", "2029", "456", "Alice Johnson");
         Card charlieCard = cardFactory.createCard("09", "2027", "789", "Charlie Brown");
 
-        // --- Link cards to accounts ---
         LinkToBankAccountService linker = new LinkToBankAccountService();
         linker.linkCardToAccount(aliceAccount, aliceCard1);
         linker.linkCardToAccount(aliceAccount, aliceCard2);
         linker.linkCardToAccount(charlieStudentAcc, charlieCard);
 
-        System.out.println("\nCards linked to Alice's account:");
-        aliceAccount.getCards().forEach(c -> System.out.println(" - " + c.getCardNumber()));
-
-        System.out.println("\nCards linked to Charlie's student account:");
-        charlieStudentAcc.getCards().forEach(c -> System.out.println(" - " + c.getCardNumber()));
-
-        // --- Serialize customer ---
+        // --- Serialize a customer ---
         CustomerXmlSerialization customerSerialization = customerSerializationFactory.create();
         String serializedString = customerSerialization.serialize(alice);
         System.out.println("\nCustomer serialized: " + serializedString);
-
         Customer reserializedCustomer = customerSerialization.deserialize(serializedString);
         System.out.println("Customer deserialized: " + reserializedCustomer.getUuid());
 
-        // --- Verification ---
-        System.out.println("\nVerification:");
-        System.out.println("Alice UUID: " + alice.getUuid());
-        System.out.println("Bob UUID: " + bob.getUuid());
-        System.out.println("Charlie UUID: " + charlie.getUuid());
-        System.out.println("Alice Balance: " + aliceAccount.getBalance());
-
-        // --- Interest logic ---
+        // --- Interest calculation ---
         System.out.println("\n=== Running Interest Calculation (manual) ===");
         interestRunnerFacade.processAllInterest(List.of(aliceAccount, bobSavings, charlieStudentAcc));
 
-        // --- Start automatic cron process ---
-        System.out.println("\n=== Starting Interest Cron Service (auto every minute) ===");
+        // --- Start automatic interest cron ---
+        System.out.println("\n=== Starting Interest Cron Service ===");
         interestCronService.start();
     }
 }

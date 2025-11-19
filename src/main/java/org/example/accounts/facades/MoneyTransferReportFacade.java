@@ -6,7 +6,6 @@ import org.example.accounts.MoneyTransfer;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.List;
 
 public class MoneyTransferReportFacade {
@@ -22,11 +21,11 @@ public class MoneyTransferReportFacade {
 
             for (BaseBankAccount acc : allAccounts) {
                 acc.getTransfers().forEach(MoneyTransfer::markAsTransferred);
+                acc.clearExportedTransfers();
             }
 
         } catch (IOException e) {
             throw new RuntimeException("Error writing transfer report", e);
         }
     }
-
 }
