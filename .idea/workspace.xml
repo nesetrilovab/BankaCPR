@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48a107b6-07b2-4d50-8d4d-3d663ac671bd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/services/ApplyInterestService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/services/observers/BankAccountObserver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/services/observers/BankAccountSubject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/services/observers/Observer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/services/observers/Subject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accounts/MoneyTransfer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/MoneyTransfer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accounts/facades/MoneyTransferReportFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/facades/MoneyTransferReportFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accounts/factories/MoneyTransferFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/accounts/factories/MoneyTransferFactory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,7 +181,8 @@
       <workItem from="1762412518594" duration="1196000" />
       <workItem from="1762414225787" duration="5396000" />
       <workItem from="1763559149888" duration="1954000" />
-      <workItem from="1763585125594" duration="2255000" />
+      <workItem from="1763585125594" duration="2485000" />
+      <workItem from="1763622001476" duration="5713000" />
     </task>
     <servers />
   </component>
